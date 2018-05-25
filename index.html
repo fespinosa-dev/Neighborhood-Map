@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neighborhood-Map</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="three columns">
+                <div class="filter-area">
+                    <h5>BART Locations San Francisco</h5>
+                </div>
+            </div>
+            <div class="nine columns">
+                <div class="topnav" id="myTopnav">
+                    <a href="#home" class="active">||||||</a>
+                    <a href="#news"></a>
+                    <a href="#contact"></a>
+                    <a href="#about"></a>
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                    <div id="map">
+
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var map;
+        function initMap() {
+              var lat = 40.759300;
+            var lng = -73.985712;
+            var map_center = new google.maps.LatLng(lat, lng);
+            var mapOptions = {
+                center: map_center,
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var mapCanvas = document.getElementById("map");
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            new google.maps.Marker({
+                map: map,
+                draggable: false,
+                position: new google.maps.LatLng(lat, lng)
+            });
+            google.maps.event.addDomListener(window, 'resize', function () {
+                map.setCenter(map_center);
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDX_glw0xmRsBOPwpqqz3LiztBCYlvzErs&callback=initMap" async
+        defer></script>
+</body>
+
+</html>
