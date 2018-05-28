@@ -28,18 +28,18 @@ class App extends Component {
                 <Filter/>
               </header>
               <div className="locations">
-              <LocationsView />
+              <LocationsView locations={this.state.locations} />
               </div>
             </div>
             <div className="col-9">
               <main>
                 <div className="topnav" id="myTopnav">
 
-                  <a href="javascript:void(0);" className="icon" onclick="myFunction()">
+                  <a href="javascript:void(0);" className="icon">
                     <i className="fa fa-bars"></i>
                   </a>
                 </div>
-                  <GoogleMap locations={this.state.locations} />
+              <GoogleMap locations={this.state.locations} />
               </main>
             </div>
           </div>

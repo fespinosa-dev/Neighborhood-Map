@@ -5,7 +5,7 @@ class Filter extends Component {
     render() {
         return (
             <div>
-                <input type="text" > </input>
+                <input type="text" />
                 <button>
                 <i className="fa fa-filter"></i> 
                 Filter

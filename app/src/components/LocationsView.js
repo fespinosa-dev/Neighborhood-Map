@@ -6,14 +6,14 @@ class LocationsView extends Component {
     render() {
         return (
             <ul>
-                {this.props.locations.map((loc)=> <li>loc.title</li>)}
+                {this.props.locations.map((loc, index)=> <li key={index}>{loc.name}</li>)}
             </ul>
         );
     }
 }
 
-LocationsView.propTypes = {
-    locations : PropTypes.array
-}
+// LocationsView.propTypes = {
+//     locations: PropTypes.array
+// }
 
 export default LocationsView;
