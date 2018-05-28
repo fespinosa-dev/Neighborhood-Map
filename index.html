@@ -14,50 +14,39 @@
 <body>
     <div class="grid">
         <div class="row">
-            <div class="col-3">
-                <h1>Location Bar</h1>
+            <div class="col-3 left-side">
+            <header>
+                <h1>Zona Colonial</h1>
                 <input type="text" name="" id="">
-            <button >
-            <i class="fa fa-filter"></i> Filter</button>
+                <button>
+                <i class="fa fa-filter"></i> Filter</button>
+            </header>
+            <div class="locations">
+            <ul>
+                <li>Coffee</li>
+                <li>Tea</li>
+                <li>Milk</li>
+            </ul>
+        </div>
             </div>
             <div class="col-9">
-                <div class="topnav" id="myTopnav">
-              
-                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </div>
+                <main>
+                    <div class="topnav" id="myTopnav">
+
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
                     <div id="map">
 
                     </div>
+                </main>
             </div>
         </div>
     </div>
-    <script>
-        var map;
-        function initMap() {
-              var lat = 40.759300;
-            var lng = -73.985712;
-            var map_center = new google.maps.LatLng(lat, lng);
-            var mapOptions = {
-                center: map_center,
-                zoom: 16,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var mapCanvas = document.getElementById("map");
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-            new google.maps.Marker({
-                map: map,
-                draggable: false,
-                position: new google.maps.LatLng(lat, lng)
-            });
-            google.maps.event.addDomListener(window, 'resize', function () {
-                map.setCenter(map_center);
-            });
-        }
-    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDX_glw0xmRsBOPwpqqz3LiztBCYlvzErs&callback=initMap" async
         defer></script>
+<script src="js/app.js"></script>
 </body>
 
 </html>
