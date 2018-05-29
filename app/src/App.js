@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Filter from './components/Filter'
 import LocationsView from './components/LocationsView'
 import GoogleMap from './components/GoogleMap'
 import './App.css';
@@ -17,6 +15,10 @@ class App extends Component {
       ]
     }
 
+  handleFilterChange = (event) => {
+    
+  }
+
 
   render() {
     return (
@@ -25,17 +27,14 @@ class App extends Component {
           <div className="col-3 left-side">
               <header>
                 <h1>Zona Colonial</h1>
-                <Filter/>
               </header>
-              <div className="locations">
               <LocationsView locations={this.state.locations} />
-              </div>
             </div>
             <div className="col-9">
               <main>
                 <div className="topnav" id="myTopnav">
 
-                  <a href="javascript:void(0);" className="icon">
+                  <a className="icon">
                     <i className="fa fa-bars"></i>
                   </a>
                 </div>

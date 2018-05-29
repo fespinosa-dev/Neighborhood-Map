@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'react-prop-types'
+import PropTypes from 'prop-types'
 
 class GoogleMap extends Component {
 
     componentDidMount() {
         this.loadMap();
     }
+
+
 
     loadMap(){
         let map;
@@ -47,9 +49,9 @@ class GoogleMap extends Component {
     }
 }
 
-// GoogleMap.propTypes = {
+GoogleMap.propTypes = {
 
-//     locations : PropTypes.array
-// }
+    locations : PropTypes.array
+}
 
 export default GoogleMap 
