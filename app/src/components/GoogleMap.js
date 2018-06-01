@@ -3,11 +3,16 @@ import PropTypes from 'prop-types'
 
 class GoogleMap extends Component {
 
+        markers = []
+
     componentDidMount() {
         this.loadMap();
     }
 
 
+    addMarkers(map){
+
+    }
 
     loadMap(){
         let map;
@@ -29,18 +34,35 @@ class GoogleMap extends Component {
                 title: location.title
             })
             bounds.extend(marker.position);
-
+            this.markers.push(marker);
         });
-
+        
         window.google.maps.event.addDomListener(window, "resize", function () {
             var center = map.getCenter();
             window.google.maps.event.trigger(map, "resize");
             map.setCenter(center);
         });
         map.fitBounds(bounds);
+
+    } 
+
+    refreshMarkers(){
+       this.markers.forEach((m)=>{
+
+          this.props.locations.forEach((l)=>{
+
+                    
+
+          });
+
+       });
+        
+        // filteredMarkers.forEach((marker)=> marker.setDefault(null));
+
     }
 
     render() {
+        this.refreshMarkers();
         return (
             <div  id="map">
 

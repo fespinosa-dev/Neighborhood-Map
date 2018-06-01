@@ -5,6 +5,7 @@ import './App.css';
 
 class App extends Component {
 
+
     state = {
       locations : [
         {name: "Memorial Museum of Dominican Resistance", position: { lat: 18.471646, lng: -69.888085 }},
@@ -12,15 +13,20 @@ class App extends Component {
         {name: "Biblioteca La Trinitaria", position: { lat: 18.471713, lng: -69.888952 }},
         {name: "Museo Fernando Peña Defilló", position: { lat: 18.470914, lng: -69.887241 }},
         {name: "Gimnasio Colonial", position: { lat: 18.472868, lng: -69.888781 }}
-      ]
+      ],
+      filterValue : ''
     }
 
   handleFilterChange = (event) => {
-    
+    this.setState({ filterValue : event.target.value})
   }
 
 
+
   render() {
+    let filteredLocations = this.state.locations.filter((location) => {
+      return location.name.match(this.state.filterValue);
+    });
     return (
       <div className="grid">
         <div className="row">
@@ -28,7 +34,7 @@ class App extends Component {
               <header>
                 <h1>Zona Colonial</h1>
               </header>
-              <LocationsView locations={this.state.locations} />
+            <LocationsView handleFilterChange={this.handleFilterChange} locations={filteredLocations} />
             </div>
             <div className="col-9">
               <main>
@@ -38,7 +44,7 @@ class App extends Component {
                     <i className="fa fa-bars"></i>
                   </a>
                 </div>
-              <GoogleMap locations={this.state.locations} />
+              <GoogleMap locations={filteredLocations} />
               </main>
             </div>
           </div>
