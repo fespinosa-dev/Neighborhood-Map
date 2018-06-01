@@ -4,14 +4,33 @@ import PropTypes from 'prop-types'
 class GoogleMap extends Component {
 
         markers = []
+        map = {}
+        bounds = {}
 
     componentDidMount() {
         this.loadMap();
     }
 
 
-    addMarkers(map){
+    reloadMarkers() {
+        if (this.markers.length > 0 && this.map) {
+            this.markers.forEach(m => m.setMap(null));
+            this.props.locations.forEach(loc => { 
+            
+              let marker =  this.markers.find((m) => {
+                  return (m.position.lng().toFixed(6) == loc.position.lng);
+                                   
+                                                            
+                    });
+                    console.log(marker.setMap(this.map))
+                    this.bounds.extend(marker.position);
 
+            });
+        }
+    }
+
+    componentDidUpdate(){
+        this.reloadMarkers();
     }
 
     loadMap(){
@@ -43,26 +62,15 @@ class GoogleMap extends Component {
             map.setCenter(center);
         });
         map.fitBounds(bounds);
-
+        this.map = map;
+        this.bounds = bounds;
     } 
 
-    refreshMarkers(){
-       this.markers.forEach((m)=>{
-
-          this.props.locations.forEach((l)=>{
-
-                    
-
-          });
-
-       });
+    
         
-        // filteredMarkers.forEach((marker)=> marker.setDefault(null));
 
-    }
 
     render() {
-        this.refreshMarkers();
         return (
             <div  id="map">
 

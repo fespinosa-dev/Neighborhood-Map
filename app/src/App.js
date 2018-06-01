@@ -18,10 +18,15 @@ class App extends Component {
     }
 
   handleFilterChange = (event) => {
-    this.setState({ filterValue : event.target.value})
+    let filterValue = event.target.value;
+    
+    this.setState((prevState) => { return { filterValue: filterValue}});
+    
   }
 
-
+  componentDidMount() {
+    this.reloadMarkers = this.gmap.reloadMarkers.bind(this.gmap);
+  }
 
   render() {
     let filteredLocations = this.state.locations.filter((location) => {
@@ -44,7 +49,7 @@ class App extends Component {
                     <i className="fa fa-bars"></i>
                   </a>
                 </div>
-              <GoogleMap locations={filteredLocations} />
+              <GoogleMap  locations={filteredLocations} />
               </main>
             </div>
           </div>
