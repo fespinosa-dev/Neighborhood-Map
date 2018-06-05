@@ -11,28 +11,38 @@ class GoogleMap extends Component {
         this.loadMap();
     }
 
+    componentDidUpdate() {
+        this.reloadMarkers();
+    }
+
+
+    showInfoWindow = (locationName)=>{
+        let location = this.props.locations.filter((location)=> location.name === locationName)[0];
+        this.markers.forEach(m => m.infoWindow.close());
+        let marker = this.findMarker(location.position);
+        marker.infoWindow.open(this.amp, marker); 
+    } 
 
     reloadMarkers() {
         if (this.markers.length > 0 && this.map) {
             this.markers.forEach(m => m.setMap(null));
             this.props.locations.forEach(loc => { 
             
-              let marker =  this.markers.find((m) => {
-                  return (m.position.lng().toFixed(6) == loc.position.lng);
-                                   
-                                                            
-                    });
-                    console.log(marker.setMap(this.map))
-                    this.bounds.extend(marker.position);
-
+              let marker =  this.findMarker(loc.position);
+              marker.setMap(this.map);
+              this.bounds.extend(marker.position);  
             });
         }
     }
-
-    componentDidUpdate(){
-        this.reloadMarkers();
+    
+    findMarker(position) {
+        return this.markers.find((m) => {
+            return (m.position.lng().toFixed(6) == position.lng);
+        });
+    
     }
 
+ 
     loadMap(){
         let map;
         let lat = 18.47265;
@@ -45,13 +55,17 @@ class GoogleMap extends Component {
         let bounds = new window.google.maps.LatLngBounds();
         let mapCanvas = document.getElementById("map");
         map = new window.google.maps.Map(mapCanvas, mapOptions);
-        this.props.locations.forEach((location) => {
 
+        this.props.locations.forEach((location) => {
+            let infoWindow = new window.google.maps.InfoWindow({
+                content: location.info
+            });
             let marker = new window.google.maps.Marker({
                 position: location.position,
                 map: map,
                 title: location.title
             })
+            marker.infoWindow = infoWindow;
             bounds.extend(marker.position);
             this.markers.push(marker);
         });

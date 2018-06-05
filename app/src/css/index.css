@@ -7,7 +7,14 @@ body, html{
   height: 100%;
 }
 
+header{
+  padding: 20px;
+  background-color: black;
+  margin-bottom: 25px;
+}
+
 h1{
+    margin: 0;
   color: #ddd;
 }
 
@@ -17,88 +24,29 @@ h1{
 }
 
 
-.row {
+.container{
+  height: 100%;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.col-1 {
-  width: 8.33%;
-}
-
-.col-2 {
-  width: 16.66%;
-}
-
-.col-3 {
-  width: 25%;
-    background-color: #333;
-
-height: 100%;
 
 }
 
-.col-4 {
-  width: 33.33%;
-}
-
-.col-5 {
-  width: 41.66%;
-  
-}
-
-.col-6 {
-  width: 50%;
-}
-
-.col-7 {
-  width: 58.33%;
-}
-
-.col-8 {
-  width: 66.66%;
-}
-
-.col-9 {
-  width: 75%;
-  height: 100%;
-
-}
-
-.col-10 {
-  width: 83.33%;
-}
-
-.col-11 {
-  width: 91.66%;
-}
-
-.col-12 {
+main{
   width: 100%;
 }
 
 #map {
-  height: 90%;
+  height: 95%;
 }
 
 main{
   height: 100%;
 }
 
-.left-side.open{
-   -webkit-transform: translate(0, 0);
-   transform: translate(0, 0);
+.pure-menu-list{
+  margin-top: 5%;
 }
 
-.topnav {
-  background-color: #333;
-  height: 10%;
-  overflow: hidden;
-}
 
-/* Style the links inside the navigation bar */
 
 .topnav a {
   float: left;
@@ -110,61 +58,88 @@ main{
   font-size: 17px;
 }
 
-/* Change the color of links on hover */
+.filterIcon {
+  font-family: 'Helvetica', FontAwesome, sans-serif;
+}
+
+.pure-menu-list{
+  cursor: default;
+}
+
+.pure-input-2{
+margin-left: 14px;
+}
+
+.pure-menu-selected .pure-menu-link {
+   color: white;
+}
 
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
-/* Add an active class to highlight the current page */
-
-.active {
-  background-color: #4CAF50;
-  color: white;
+.pure-menu-link:hover{
+ background-color :#333;
 }
 
-/* Hide the link that should open and close the topnav on small screens */
+
+
 
 .topnav .icon {
   display: none;
 }
 
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+.left-side{
+      background-color: black;
+      width: 350px;
+      height: 100%;
+      position: absolute;
+      transform: translate(-350px, 0);
+      transition: transform 0.3s ease;
+
+}
+
+.left-side.open{
+   -webkit-transform: translate(0, 0);
+   transform: translate(0, 0);
+}
+
+#map{
+  z-index: -1;
+  height: 95%;
+
+}
+
+.topnav{
+   height: 5%;
+   overflow: hidden;
+   background-color: #333;
+}
 
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {
     display: none;
   }
   .topnav a.icon {
-    float: left;
+    float: right;
     display: block;
-  }
-
-  .left-side{
-    position: absolute;
-    transform: translate(-300px, 0);
-    transition:  transform 0.3s ease;
-  }
-  .col-9{
-    width: 100%;
   }
 }
+@media screen and (min-width: 600px) {
+.left-side {
+  position: relative;
+  transform: translate(0, 0)
+}
 
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+.container {
+  display: flex;
+  flex-flow:  nowrap;
+}
 
-@media screen and (max-width: 600px) {
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+main {
+  width: auto;
+  flex-grow: 1;
+}
+
 }
