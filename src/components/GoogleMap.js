@@ -51,9 +51,12 @@ class GoogleMap extends Component {
 
  
     loadMap(){
+        if (!window.google){
+            return;
+        }
         let map;
         let lat = 18.47265;
-        let lng = -69.886543;
+        let lng = -69.886543
         let map_center = new window.google.maps.LatLng(lat, lng);
         let mapOptions = {
             center: map_center,
