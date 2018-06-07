@@ -11,9 +11,11 @@ git clone https://github.com/fjevictoriano/Neighborhood-Map.git
 
 Go to the folder where you cloned the repository.
 
-npm i install -g serve && npm serve -s build (The installation may take some minutes).
+npm i && install -g serve (The installation may take some minutes).
 
-You should be able to see the app running on your default browser. 
+Then npm run build && npm serve -s build  
+
+You should be able to see the app running on your default browser: http://localhost:3000/
 
 ```
 
