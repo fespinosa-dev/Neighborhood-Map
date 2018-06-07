@@ -18,3 +18,18 @@ You should be able to see the app running on your default browser.
 ```
 
 ## Quick Overview
+
+Filtering
+
+![alt text](https://image.ibb.co/eW8xco/Screen_Shot_2018_06_06_at_9_45_00_PM.png)
+
+
+Selecting a location from the list.
+
+![alt text](https://image.ibb.co/fsyxco/Screen_Shot_2018_06_06_at_9_42_28_PM.png)
+
+
+Page view on mobile
+
+![alt text](https://image.ibb.co/i6Qcco/Screen_Shot_2018_06_06_at_9_43_45_PM.png)
+
