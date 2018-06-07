@@ -17,13 +17,13 @@ class LocationsView extends Component {
         return (
             <div className="locations">
             <form className="pure-form">
-                    <input placeholder="&#xf0b0; Filter locations" onChange={this.props.handleFilterChange} className="pure-input-1 filterIcon" type="text" />
+                    <input tabIndex="0" placeholder="&#xf0b0; Filter locations" onChange={this.props.handleFilterChange} className="pure-input-1 filterIcon" type="text" />
             </form>
-            <ul className="pure-menu-list">
+                <ul className="pure-menu-list" tabIndex="0">
                 {this.props.locations.map((loc, index) => 
-                        <li className={this.state.selectedLocation == loc.name ? "pure-menu-item pure-menu-selected" :
+                        <li  className={this.state.selectedLocation == loc.name ? "pure-menu-item pure-menu-selected" :
                             "pure-menu-item"} key={index}>
-                            <a onClick={this.handleLocationClick} className="pure-menu-link">
+                            <a tabIndex="0" onClick={this.handleLocationClick} className="pure-menu-link">
                         {loc.name}
                     </a>
                 </li>)}
@@ -34,7 +34,8 @@ class LocationsView extends Component {
 }
 
 LocationsView.propTypes = {
-    locations: PropTypes.array
+    locations: PropTypes.array,
+    handleFilterChange : PropTypes.func
 }
 
 export default LocationsView;

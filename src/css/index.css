@@ -1,5 +1,6 @@
 
-body, html{
+body, 
+html{
   height: 100%;
   width: 100%;
 }
@@ -36,8 +37,12 @@ main{
   width: 100%;
 }
 
-#map {
+#map-container{
   height: 95%;
+}
+
+#map {
+  height: 100%;
 }
 
 main{
@@ -72,7 +77,8 @@ main{
 margin-left: 14px;
 }
 
-.pure-menu-selected .pure-menu-link {
+.pure-menu-selected 
+.pure-menu-link {
    color: white;
 }
 
@@ -86,9 +92,8 @@ margin-left: 14px;
 }
 
 
-
-
-.topnav .icon {
+.topnav 
+.icon {
   display: none;
 }
 
@@ -109,11 +114,6 @@ margin-left: 14px;
    transform: translate(0, 0);
 }
 
-#map{
-  height: 95%;
-
-
-}
 
 .topnav{
    height: 5%;
@@ -122,10 +122,12 @@ margin-left: 14px;
 }
 
 @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {
+  .topnav 
+  a:not(:first-child) {
     display: none;
   }
-  .topnav a.icon {
+  .topnav 
+  a.icon {
     float: right;
     display: block;
   }

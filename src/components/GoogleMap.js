@@ -16,6 +16,7 @@ class GoogleMap extends Component {
     }
 
 
+    //Displays an info window when the user clicked a location from the list closing already opened ones.
     showInfoWindow = (locationName)=>{
         let location = this.props.locations.filter((location)=> location.name === locationName)[0];
         this.markers.forEach(m => m.infoWindow.close());
@@ -25,11 +26,13 @@ class GoogleMap extends Component {
 
     } 
 
+    // Animates a maker on the map. Default animation is Bounce .
     animateMarker(marker){
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
         setTimeout(() => marker.setAnimation(null), 1000);
     }
 
+    // remove markers already on the map and load them again from updated location list
     reloadMarkers() {
         if (this.markers.length > 0 && this.map) {
             this.markers.forEach(m => m.setMap(null));
@@ -42,6 +45,7 @@ class GoogleMap extends Component {
         }
     }
     
+    // finds a marker by given position
     findMarker(position) {
         return this.markers.find((m) => {
             return (m.position.lng().toFixed(6) == position.lng);
@@ -50,6 +54,7 @@ class GoogleMap extends Component {
     }
 
  
+    // creates the map and markers with their corresponding info windows.
     loadMap(){
         if (!window.google){
             return;
@@ -101,8 +106,10 @@ class GoogleMap extends Component {
 
     render() {
         return (
+            <div aria-label="Map with locations" id="map-container" role="application" tabIndex="3">
             <div  id="map">
 
+            </div>
             </div>
         );
     }
