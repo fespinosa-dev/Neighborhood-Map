@@ -24,6 +24,21 @@ class GoogleMap extends Component {
 
     //Displays an info window when the user clicked a location from the list closing already opened ones.
     showInfoWindow = (locationName)=>{
+        
+        let clientid = "543MRKF5RHNKR2QS1MIEBAZGH3GBLTC22K2BBMSZZPMJ3BBL";
+        let secret = "B3X3BET0CGK0ND5BYVHUUFY0QU0GAM0KGURVK3T22ZQUK0YH";
+        let version = 20180323;
+        let ll = "18.47265,-69.886543"
+        let url = `https://api.foursquare.com/v2/venues/search?query=${locationName}&client_id=${clientid}&client_secret=${secret}&v=${version}&ll=${ll}`;
+        
+        fetch(url).then((response)=>{
+            return response.json();
+        }).then((data)=>{
+                console.log(data);
+        }).catch((err)=>{
+
+        });
+        
         let location = this.props.locations.filter((location)=> location.name === locationName)[0];
         this.markers.forEach(m => m.infoWindow.close());
         let marker = this.findMarker(location.position);
