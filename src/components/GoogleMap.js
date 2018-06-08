@@ -6,9 +6,15 @@ class GoogleMap extends Component {
         markers = []
         map = {}
         bounds = {}
+        mapElement = React.createRef();
 
     componentDidMount() {
-        this.loadMap();
+        // Connect the initMap() function within this class to the global window context,
+        // so Google Maps can invoke it
+        window.initMap = this.initMap.bind(this, this.refs.mapElement);
+         // Asynchronously load the Google Maps script, passing in the callback reference
+        this.loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDX_glw0xmRsBOPwpqqz3LiztBCYlvzErs&callback=initMap");
+        
     }
 
     componentDidUpdate() {
@@ -53,9 +59,12 @@ class GoogleMap extends Component {
     
     }
 
- 
+    onerror(){
+        alert("This page didn't load Google Maps correctly. See the JavaScript console for technical details.");
+    }
+
     // creates the map and markers with their corresponding info windows.
-    loadMap(){
+    initMap(mapElement){
         if (!window.google){
             return;
         }
@@ -68,8 +77,7 @@ class GoogleMap extends Component {
             zoom: 17,
         };
         let bounds = new window.google.maps.LatLngBounds();
-        let mapCanvas = document.getElementById("map");
-        map = new window.google.maps.Map(mapCanvas, mapOptions);
+        map = new window.google.maps.Map(mapElement, mapOptions);
 
         this.props.locations.forEach((location) => {
             let infoWindow = new window.google.maps.InfoWindow({
@@ -101,13 +109,19 @@ class GoogleMap extends Component {
     } 
 
     
-        
-
+    loadScript(src) {
+        var ref = window.document.getElementsByTagName("script")[0];
+        var script = window.document.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.onerror = this.onerror;
+        ref.parentNode.insertBefore(script, ref);
+    }
 
     render() {
         return (
             <div aria-label="Map with locations" id="map-container" role="application" tabIndex="4">
-            <div  id="map">
+                <div ref="mapElement" id="map">
 
             </div>
             </div>
