@@ -106,7 +106,7 @@ class GoogleMap extends Component {
 
     render() {
         return (
-            <div aria-label="Map with locations" id="map-container" role="application" tabIndex="3">
+            <div aria-label="Map with locations" id="map-container" role="application" tabIndex="4">
             <div  id="map">
 
             </div>

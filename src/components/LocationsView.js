@@ -15,7 +15,7 @@ class LocationsView extends Component {
 
     render() {
         return (
-            <div className="locations">
+            <nav className="locations">
             <form className="pure-form">
                     <input tabIndex="0" placeholder="&#xf0b0; Filter locations" onChange={this.props.handleFilterChange} className="pure-input-1 filterIcon" type="text" />
             </form>
@@ -28,7 +28,7 @@ class LocationsView extends Component {
                     </a>
                 </li>)}
             </ul>
-            </div>
+            </nav>
         );
     }
 }

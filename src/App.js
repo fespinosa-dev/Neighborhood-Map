@@ -5,6 +5,7 @@ import GoogleMap from './components/GoogleMap'
 class App extends Component {
 
     leftSide = React.createRef();
+    hamburgerBnt = React.createRef();
 
     state = {
       locations : [
@@ -30,8 +31,10 @@ class App extends Component {
   openLeftSide = (e) =>{
     if (this.leftSide.current.className === "left-side") {
       this.leftSide.current.className += " open";
+      this.hamburgerBnt.current.setAttribute("aria-expanded", "true");
     } else {
       this.leftSide.current.className = "left-side";
+      this.hamburgerBnt.current.setAttribute("aria-expanded", "false");
     }
   }
 
@@ -53,7 +56,7 @@ class App extends Component {
             </div>
               <main>
                 <div className="topnav" id="myTopnav">
-                  <a onClick={this.openLeftSide}  className="icon">
+                 <a ref={this.hamburgerBnt} tabIndex="3" role="button" aria-expanded="false" onClick={this.openLeftSide}   className="icon">
                     <i className="fa fa-bars"></i>
                   </a>
                 </div>
