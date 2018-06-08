@@ -22,7 +22,7 @@ You should be able to see the app running on your default browser: http://localh
 ## Production mode
 
 ```
-If would like  to run the app in production mode you should run the following commands:
+If you like to run the app in production mode you should run the following commands:
 
 npm run serve
 
