@@ -51,6 +51,7 @@ main{
 
 .pure-menu-list{
   margin-top: 5%;
+  overflow: hidden;
 }
 
 
