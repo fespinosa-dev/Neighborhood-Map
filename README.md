@@ -13,7 +13,7 @@ Go to the folder where you cloned the repository.
 
 npm i && install -g serve (The installation may take some minutes).
 
-Then npm run build && npm serve -s build  
+Then npm start 
 
 You should be able to see the app running on your default browser: http://localhost:3000/
 
@@ -24,9 +24,9 @@ You should be able to see the app running on your default browser: http://localh
 ```
 If you like to run the app in production mode you should run the following commands:
 
-npm run serve
+npm run build && serve -s build
 
-And then visit localhost:5000
+And then visit localhost:3000
 
 ```
 
