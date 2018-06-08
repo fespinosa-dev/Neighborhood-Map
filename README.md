@@ -11,11 +11,25 @@ git clone https://github.com/fjevictoriano/Neighborhood-Map.git
 
 Go to the folder where you cloned the repository.
 
-npm i install -g serve && npm serve -s build (The installation may take some minutes).
+npm i && install -g serve (The installation may take some minutes).
 
-You should be able to see the app running on your default browser. 
+Then npm run build && npm serve -s build  
+
+You should be able to see the app running on your default browser: http://localhost:3000/
 
 ```
+
+## Production mode
+
+```
+If you like to run the app in production mode you should run the following commands:
+
+npm run serve
+
+And then visit localhost:5000
+
+```
+
 
 ## Quick Overview
 
