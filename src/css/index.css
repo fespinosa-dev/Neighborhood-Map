@@ -54,7 +54,14 @@ main{
   overflow: hidden;
 }
 
+.venueBlock{
+  width: 200px;
+  display: flex;
+}
 
+.venueDetails{
+  margin-left: 5px;
+}
 
 .topnav a {
   float: left;
