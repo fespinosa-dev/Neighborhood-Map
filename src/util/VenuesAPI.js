@@ -19,7 +19,7 @@ export const search = (query) => {
     return fetch(withQuery(`${api}/search`, requestParams))
         .then(response => response.json())
         .then(data => {
-            if (data.meta.code == 429) {
+                if(data.meta.code == 429){
                 return Promise.reject(new Error(data.meta.errorDetail));
             }
             return data.response.venues

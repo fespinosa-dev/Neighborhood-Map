@@ -49,7 +49,6 @@ class GoogleMap extends Component {
 
     //creates the markers along with their info windows
     createMarkers() {
-        let bounds = new window.google.maps.LatLngBounds();
         this.props.locations.forEach((venue) => {
                  let infoWindow = new window.google.maps.InfoWindow();
                 let marker = new window.google.maps.Marker({
