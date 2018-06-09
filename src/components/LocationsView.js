@@ -9,8 +9,9 @@ class LocationsView extends Component {
 
     handleLocationClick= (event) =>{
         let clickedLocation = event.target;
-        this.setState({ selectedLocation: clickedLocation.innerText})
-        this.showInfoWindow(clickedLocation.innerText)
+        this.setState({ selectedLocation: clickedLocation.innerText});
+        let location = this.props.locations.filter((location) => location.name === clickedLocation.innerText)[0];
+        this.showInfoWindow(location);
     }
 
     render() {

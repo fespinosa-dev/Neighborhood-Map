@@ -51,26 +51,19 @@ class GoogleMap extends Component {
     createMarkers() {
         let bounds = new window.google.maps.LatLngBounds();
         this.props.locations.forEach((venue) => {
-            VenuesAPI.get(venue.id).then(venueWithDetail => {
-                let infoWindow = new window.google.maps.InfoWindow({
-                    content: this.createInfoWindowContent(venueWithDetail)
-                });
+                 let infoWindow = new window.google.maps.InfoWindow();
                 let marker = new window.google.maps.Marker({
                     position: { lat: venue.location.lat, lng: venue.location.lng },
                     map: this.map,
                     title: venue.name
                 })
                 marker.addListener("click", () => {
-                    marker.infoWindow.open(this.map, marker);
-                    this.animateMarker(marker)
-
+                    this.showInfoWindow(venue);
                 });
                 marker.infoWindow = infoWindow;
                 this.markers.push(marker);
                 this.fitBoundsToVisibleMarkers();
-            }).catch(error =>{
-                console.log(error+  " - Couldn't create markers ")
-            });
+       
             });
     }
 
@@ -121,15 +114,17 @@ class GoogleMap extends Component {
     }
 
 
-    //Displays an info window when the user clicked a location from the list closing already opened ones.
-    showInfoWindow = (locationName) => {
-        let location = this.props.locations.filter((location) => location.name === locationName)[0];
-        if (this.markers.length > 0){
-            this.markers.forEach(m => m.infoWindow.close());
-            let marker = this.findMarker(location.name);
-            marker.infoWindow.open(this.map, marker);
-            this.animateMarker(marker);
-        }
+    //Displays the info window
+    showInfoWindow = (location) => {
+            VenuesAPI.get(location.id).then(venueWithDetail => {
+                let marker = this.findMarker(venueWithDetail.name);
+                marker.infoWindow.setContent(this.createInfoWindowContent(venueWithDetail));
+                this.markers.forEach(m => m.infoWindow.close());
+                marker.infoWindow.open(this.map, marker);
+                this.animateMarker(marker);
+            }).catch(error => {
+                console.log(error + " - Couldn't get location details");
+            });
     }
 
     // finds a marker by given position
