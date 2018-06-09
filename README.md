@@ -34,7 +34,7 @@ And then visit localhost:3000
 
 The app uses a third party API to fetch location details called [foursquare](https://foursquare.com/).
 I used a free developer account which has limited qauota calls so in case the qauota is exceeded you should wait
-or you can create your account and replace `Client ID` `Client Secret` values with yours whitin VenuesAPI.js file 
+or you can create your own account and replace `Client ID` `Client Secret` values with yours whitin VenuesAPI.js file 
 like below : 
 
 ```javascript
