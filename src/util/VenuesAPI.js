@@ -2,8 +2,8 @@ var withQuery = require('with-query');
 
 const api = "https://api.foursquare.com/v2/venues";
 const requestParams = {
-    client_id: "JAFRUUL2OWIGLJBA2PM0AWCWZKCJHOOSGMCJH5VPROF5TK3L",
-    client_secret: "JEGU0AJ43HZ5BZ3I1QLQDMHXCAJS3XGAUQPH2DCVEZZVJMCX",
+    client_id: "XB3BTCZFUYPABJEOCCIQK3JUZVRFGVBQKTWJFUBE4KBNPMN1",
+    client_secret: "AZSXYYGYQHPXDBLYCS4WDTWQ4YOS54BMVE2SK3UHFLX3QS1D",
     v: 20180323,
     ll: "18.47265,-69.886543"
 }
